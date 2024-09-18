@@ -23,10 +23,16 @@ ReactUseMemo is a simple React application that demonstrates the use of the `use
 
 ## Installation
 
+- npm create-react-app app-name
+
+## Usage
+
+- Understand how react useMemo works
+
 1. **Clone the Repository**
 
    Open your terminal and run the following command to clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/ReactUseMemo.git
+   git clone https://github.com/kaleemiqbal4/ReactUseMemo.git
    ```
