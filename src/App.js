@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useMemo } from "react";
 
 function App() {
+  const [data, setData] = useState([1, 2, 3]);
+  const [count, setCount] = useState(0);
+
+  const processedData = useMemo(() => {
+    return data.map((item) => item * 2);
+  }, [data]);
+
+  const updateData = () => {
+    setData((prevData) => [...prevData, prevData.length + 1]);
+  };
+
+  const incrementCount = () => {
+    setCount(count + 1); // Only count changes, not data
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Dependency will be change so Data will be change</h1>
+      <button onClick={updateData}>Add Data</button>
+      <ul>
+        {processedData.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <h1>Dependency will not be change so Data will not be change</h1>
+      <div>
+        <button onClick={incrementCount}>Increment Count</button>
+        <p>Count: {count}</p>
+        <ul>
+          {processedData.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 
